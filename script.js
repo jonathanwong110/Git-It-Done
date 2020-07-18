@@ -9,6 +9,12 @@ function createTask() {
   ul.appendChild(li);
   input.value = "";
 
+  function crossOut() {
+		li.classList.toggle("done");
+	}
+
+	li.addEventListener("click",crossOut);
+
   function deleteTask() {
     li.classList.add("delete")
     const deletableTask = document.getElementsByClassName('delete')

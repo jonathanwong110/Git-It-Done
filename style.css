@@ -25,6 +25,11 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
 }
 
+.new-task-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .new-task-form input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -61,22 +66,20 @@ ul {
 li {
   margin-left: auto;
   margin-right: auto;
-  min-width: 50%;
+  max-width: 60%;
 	list-style: none;
 	padding: 10px 20px;
 	color: #ffffff;
-	text-transform: capitalize;
-	font-weight: 600;
-	border: 2px solid #595959;
+  text-transform: capitalize;
+  font-weight: bold;
+	border: 3px solid #595959;
   border-radius: 5px;
-  margin-right: 40px;
+  text-align: left;
 	margin-bottom: 10px;
 	background: #343a40;
 	transition: all 0.75s ease;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-ms-transition: all 0.5s ease;
-	-o-transition: all 0.5 ease;
+  letter-spacing: 1px;
+  font-size: 20px;
 }
 
 li > button {
@@ -90,4 +93,9 @@ li > button {
 
 li > button:hover {
   color:red;
+}
+
+.done {
+  text-decoration: line-through black;
+  border: 3px solid green;
 }
