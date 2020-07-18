@@ -1,0 +1,56 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom, #2c3e50 0%, #bdc3c7 100%);
+}
+
+.topnav {
+  background-color:#343a40;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 8px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+}
+
+form.new-task-form input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  min-width: 25%;
+  background: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form.new-task-form button {
+  width: 50px;
+  padding: 10px;
+  background: #595959;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+form.new-task-form button:hover {
+  background: #343a40;
+}
+
+form.new-task-form::after {
+  content: "";
+  clear: both;
+  display: table;
+}
