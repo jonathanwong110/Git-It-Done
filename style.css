@@ -78,3 +78,16 @@ li {
 	-ms-transition: all 0.5s ease;
 	-o-transition: all 0.5 ease;
 }
+
+li > button {
+	font-weight: normal;
+	background: none;
+	border: none;
+	float: right;
+	color: white;
+	font-weight: 800;
+}
+
+li > button:hover {
+  color:red;
+}
