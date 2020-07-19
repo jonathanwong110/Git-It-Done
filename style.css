@@ -62,3 +62,40 @@ ul {
   list-style-type: none;
   text-align: center;
 }
+
+.task_input {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 60%;
+	list-style: none;
+	padding: 10px 20px;
+	color: #ffffff;
+  font-weight: bold;
+	border: 3px solid #595959;
+  border-radius: 5px;
+  text-align: left;
+	margin-bottom: 10px;
+	background: #343a40;
+	transition: all 0.75s ease;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.task button {
+  border: 3px solid #595959;
+  background: #343a40;
+  margin-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: white;
+}
+
+.task button:hover {
+  background: #595959;
+}
+
+.done {
+  border: 3px green;
+}
