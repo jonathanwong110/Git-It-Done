@@ -1,100 +1,84 @@
-const enterButton = document.getElementById('enter');
-const input = document.getElementById('userInput');
-const ul = document.querySelector('ul');
-const item = document.getElementsByTagName('li');
+const container = document.querySelector('.container');
+const inputValue = document.querySelector('.userInput');
+const addition = document.querySelector('.addition');
 
-if (localStorage.getItem('tasks') == undefined){
-  const tasks = [];
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-} else {
-  let savedTasks = JSON.parse(localStorage.tasks)
-  for (i = 0; i < savedTasks.length; i++) {
-    const li = document.createElement('li')
-    li.appendChild(document.createTextNode(savedTasks[i]));
-    ul.appendChild(li);
-
-    function crossOut() {
-      li.classList.toggle('done');
-    }
-  
-    li.addEventListener('click',crossOut);
-  
-    var deleteButton = document.createElement('button');
-    deleteButton.appendChild(document.createTextNode('X'));
-    li.appendChild(deleteButton);
-    deleteButton.addEventListener('click', deleteTask);
-
-    function deleteTask() {
-      li.classList.add('delete')
-      const deletableTask = document.getElementsByClassName('delete')
-      for (i = 0; i < savedTasks.length; i++) {
-        if (savedTasks[i] = deletableTask[0].innerText.slice(0, -2)) {
-          let currentLocalStorage = JSON.parse(localStorage.tasks)
-          currentLocalStorage = JSON.parse(localStorage.tasks).filter(e => e !== deletableTask[0].innerText.slice(0, -2))
-          localStorage.setItem('tasks', JSON.stringify(currentLocalStorage))
-        }
-      }
-      deletableTask[0].remove()
-    }
-  }
+if(window.localStorage.getItem("tasks") == undefined){
+     const tasks = [];
+     window.localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-const tasksEX = localStorage.getItem('tasks');
+const tasksEX = window.localStorage.getItem("tasks");
 const tasks = JSON.parse(tasksEX);
 
-function createTask() {
-  const li = document.createElement('li')
-  li.appendChild(document.createTextNode(input.value));
-  ul.appendChild(li);
-  const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  savedTasks.push(input.value)
-  localStorage.setItem('tasks', JSON.stringify(savedTasks))
-  input.value = '';
-
-  function crossOut() {
-		li.classList.toggle('done');
+class Task{
+	constructor(name){
+		this.createTask(name);
 	}
+    createTask(name){
+    	const taskBox = document.createElement('div');
+        taskBox.classList.add('task');
 
-	li.addEventListener('click',crossOut);
+    	const input = document.createElement('input');
+    	input.type = "text";
+    	input.disabled = true;
+    	input.value = name;
+    	input.classList.add('task_input');
 
-  var deleteButton = document.createElement('button');
-  deleteButton.appendChild(document.createTextNode('X'));
-  li.appendChild(deleteButton);
-  deleteButton.addEventListener('click', deleteTask);
+    	const editTask = document.createElement('button');
+    	editTask.classList.add('edit');
+    	editTask.innerHTML = '<i class="fa fa-edit"> </i>';
+    	editTask.addEventListener('click', () => this.editTask(input, name));
 
-  function deleteTask() {
-    li.classList.add('delete')
-    const deletableTask = document.getElementsByClassName('delete')
-    for (i = 0; i < savedTasks.length; i++) {
-      if (savedTasks[i] = deletableTask[0].innerText.slice(0, -2)) {
-        let currentLocalStorage = JSON.parse(localStorage.tasks)
-        currentLocalStorage = JSON.parse(localStorage.tasks).filter(e => e !== deletableTask[0].innerText.slice(0, -2))
-        localStorage.setItem('tasks', JSON.stringify(currentLocalStorage))
-      }
+    	const removeTask = document.createElement('button');
+    	removeTask.classList.add('remove');
+    	removeTask.innerHTML = '<i class="fa fa-trash-o"> </i>';
+    	removeTask.addEventListener('click', () => this.removeTask(taskBox, name));
+
+    	container.appendChild(taskBox);
+
+        taskBox.appendChild(input);
+        taskBox.appendChild(editTask);
+        taskBox.appendChild(removeTask);
+
     }
-    deletableTask[0].remove()
-  }
+
+    editTask(input, name){
+        if(input.disabled == true){
+           input.disabled = !input.disabled;
+        }
+    	else{
+            input.disabled = !input.disabled;
+            let indexof = tasks.indexOf(name);
+            tasks[indexof] = input.value;
+            window.localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    }
+
+    removeTask(taskBox, name){
+        taskBox.parentNode.removeChild(taskBox);
+        let index = tasks.indexOf(name);
+        tasks.splice(index, 1);
+        window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
 }
 
-function inputLength() {
-  return input.value.length;
+addition.addEventListener('click', check);
+window.addEventListener('keydown', (e) => {
+	if(e.which == 13){
+		check();
+	}
+})
+
+function check() {
+	if(inputValue.value != "") {
+		new Task(inputValue.value);
+        tasks.push(inputValue.value);
+        window.localStorage.setItem("tasks", JSON.stringify(tasks));
+		inputValue.value = "";
+	}
 }
 
-function addTaskAfterClick() {
-  if (inputLength() > 0) {
-    createTask();
-  } else {
-    alert('You need to enter text in order to make an entry')
-  }
+
+for (let i = 0 ; i < tasks.length ; i++){
+    new Task(tasks[i]);
 }
-
-function addTaskAfterKeypress(event) {
-  if (inputLength() > 0 && event.which === 13) {
-    createTask();
-  }
-}
-
-
-enterButton.addEventListener('click', addTaskAfterClick);
-
-input.addEventListener('keypress', addTaskAfterKeypress);

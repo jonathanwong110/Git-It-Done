@@ -62,39 +62,3 @@ ul {
   list-style-type: none;
   text-align: center;
 }
-
-li {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 60%;
-	list-style: none;
-	padding: 10px 20px;
-	color: #ffffff;
-  font-weight: bold;
-	border: 3px solid #595959;
-  border-radius: 5px;
-  text-align: left;
-	margin-bottom: 10px;
-	background: #343a40;
-	transition: all 0.75s ease;
-  letter-spacing: 1px;
-  font-size: 20px;
-}
-
-li > button {
-	font-weight: normal;
-	background: none;
-	border: none;
-	float: right;
-	color: white;
-	font-weight: 800;
-}
-
-li > button:hover {
-  color:red;
-}
-
-.done {
-  text-decoration: line-through black;
-  border: 3px solid green;
-}
