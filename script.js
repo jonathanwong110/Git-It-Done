@@ -30,6 +30,11 @@ class Task {
     editTask.innerHTML = '<i class="fa fa-edit" style="font-size:24px"> </i>';
     editTask.addEventListener('click', () => this.editTask(input, name));
 
+    const checkTask = document.createElement('button');
+    checkTask.classList.add('check');
+    checkTask.innerHTML = '<i class="fa fa-check" style="font-size:24px"> </i>';
+    checkTask.addEventListener('click', () => this.checkTask(input, name));
+
     const removeTask = document.createElement('button');
     removeTask.classList.add('remove');
     removeTask.innerHTML = '<i class="fa fa-trash-o" style="font-size:24px"> </i>';
@@ -39,6 +44,7 @@ class Task {
 
     taskBox.appendChild(input);
     taskBox.appendChild(editTask);
+    taskBox.appendChild(checkTask);
     taskBox.appendChild(removeTask);
 
   }
@@ -53,6 +59,10 @@ class Task {
       tasks[indexof] = input.value;
       window.localStorage.setItem("tasks", JSON.stringify(tasks));
     }
+  }
+
+  checkTask(taskBox) {
+    taskBox.classList.toggle('completed')
   }
 
   removeTask(taskBox, name) {

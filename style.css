@@ -33,7 +33,7 @@ body {
 .new-task-form input[type=text] {
   padding: 10px;
   font-size: 17px;
-  border: 1px solid grey;
+  border: 3px solid grey;
   min-width: 65%;
   background: white;
   border-radius: 5px;
@@ -48,7 +48,7 @@ body {
   background: #343a40;
   color: white;
   font-size: 17px;
-  border: 1px solid grey;
+  border: 3px solid #595959;;
   cursor: pointer;
   margin-left: 5px;
   border-radius: 5px;
@@ -84,11 +84,10 @@ ul {
 .task button {
   border: 3px solid #595959;
   background: #343a40;
-  margin-left: 5px;
   padding-top: 7px;
-  padding-bottom: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-bottom: 11px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: white;
 }
 
@@ -96,6 +95,7 @@ ul {
   background: #595959;
 }
 
-.done {
-  border: 3px green;
+.completed {
+  text-decoration: line-through black;
+  border: 3px solid green;
 }
