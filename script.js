@@ -3,12 +3,12 @@ const inputValue = document.querySelector('.userInput');
 const addition = document.querySelector('.addition');
 
 if (window.localStorage.getItem("tasks") == undefined) {
-  const tasks = [];
+  const tasks = ["Make coffee", "Work on new project"];
   window.localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-const tasksEX = window.localStorage.getItem("tasks");
-const tasks = JSON.parse(tasksEX);
+const tasksStorage = window.localStorage.getItem("tasks");
+const tasks = JSON.parse(tasksStorage);
 
 class Task {
   constructor(name) {
