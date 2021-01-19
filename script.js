@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-const inputValue = document.querySelector('.userInput');
+const inputValue = document.querySelector('.user-input');
 const addition = document.querySelector('.addition');
 
 if (window.localStorage.getItem("tasks") == undefined) {
@@ -23,7 +23,7 @@ class Task {
     input.type = "text";
     input.disabled = true;
     input.value = name;
-    input.classList.add('task_input');
+    input.classList.add('task-input');
 
     const editTask = document.createElement('button');
     editTask.classList.add('edit');
